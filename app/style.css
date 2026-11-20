@@ -1,0 +1,62 @@
+/* Vice City Cover Maker — dark neon editor chrome around the live preview. */
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #12081f; color: #f4eefc; font: 15px/1.45 system-ui, -apple-system, sans-serif; }
+
+.topbar { padding: 18px 28px 8px; }
+.brand { font: 900 30px/1 "Arial Black", Impact, sans-serif; letter-spacing: 1px; color: #fff; text-shadow: 0 0 18px #ff2e88, 0 0 42px rgba(255, 46, 136, 0.5); }
+.brand span { color: #ffb347; text-shadow: 0 0 18px #ff7a3d; }
+.tagline { margin: 6px 0 0; color: #cbb8e8; max-width: 720px; }
+
+.app { display: flex; gap: 28px; align-items: flex-start; padding: 14px 28px 28px; }
+.controls { width: 340px; flex: none; display: flex; flex-direction: column; gap: 16px; }
+.group { background: #1d0f33; border: 1px solid #3a1c5e; border-radius: 12px; padding: 16px; }
+.group h2 { margin: 0 0 12px; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #ff8ac2; }
+.group label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; margin-bottom: 10px; }
+.group label:last-child { margin-bottom: 0; }
+
+input[type=text], select { font: inherit; color: #fff; background: #12081f; padding: 9px 10px; border: 1px solid #5b2a86; border-radius: 8px; }
+input[type=text]:focus, select:focus { outline: 2px solid #ff2e88; outline-offset: 1px; }
+input[type=file] { font: inherit; margin-top: 4px; }
+.file-label { cursor: pointer; }
+.hint { margin: 8px 0 0; color: #a98fd0; font-size: 13px; font-weight: 400; }
+
+button { font: inherit; font-weight: 700; padding: 10px 12px; border: 0; border-radius: 8px; background: linear-gradient(135deg, #ff2e88, #ff7a3d); color: #fff; cursor: pointer; }
+button:hover { filter: brightness(1.12); }
+button.ghost { background: transparent; border: 1px solid #5b2a86; color: #ffd9a0; }
+.seg { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.seg:last-child { margin-bottom: 0; }
+.seg button { flex: 1; padding: 8px 6px; background: #2a1450; color: #d9c8f5; font-weight: 600; white-space: nowrap; }
+.seg button.active { background: linear-gradient(135deg, #ff2e88, #ff7a3d); color: #fff; }
+.sample-row { display: flex; gap: 8px; }
+.sample-row button { flex: 1; padding: 8px 6px; font-size: 13px; }
+.export { display: flex; flex-direction: column; gap: 8px; }
+#status { margin: 4px 0 0; min-height: 1.2em; color: #8df5d3; font-size: 13px; }
+
+.checks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+.check { flex-direction: row !important; align-items: center; font-weight: 500 !important; margin: 0 !important; }
+.check input { accent-color: #ff2e88; width: 16px; height: 16px; }
+
+.panel-row { display: grid; grid-template-columns: 64px 1fr; gap: 6px 10px; align-items: center; padding: 10px; border: 1px solid #3a1c5e; border-radius: 8px; margin-bottom: 8px; cursor: pointer; }
+.panel-row.selected { border-color: #ff2e88; background: #2a1450; box-shadow: 0 0 0 1px #ff2e88; }
+.panel-row:last-child { margin-bottom: 0; }
+.panel-name { font-weight: 700; }
+.panel-row select { padding: 6px; }
+.panel-row input[type=range] { grid-column: 1 / -1; width: 100%; accent-color: #ff2e88; }
+.panel-row button.mini { grid-column: 1 / -1; padding: 5px; font-size: 12px; background: #2a1450; color: #d9c8f5; }
+
+.preview-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: 4px; }
+#cover { max-width: 100%; max-height: calc(100vh - 190px); width: auto; height: auto; border-radius: 6px; box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.15); cursor: grab; touch-action: none; }
+#cover:active { cursor: grabbing; }
+.preview-note { margin: 0; color: #a98fd0; font-size: 13px; text-align: center; }
+
+/* Screenshot scenes: cover mode shows only the cover, edge to edge. */
+body.shot-cover { background: #160a2e; }
+body.shot-cover .topbar, body.shot-cover .controls, body.shot-cover .preview-note { display: none; }
+body.shot-cover .app { padding: 0; display: block; }
+body.shot-cover .preview-wrap { padding: 0; display: block; }
+body.shot-cover #cover { display: block; width: 100vw; height: 100vh; max-height: none; border-radius: 0; box-shadow: none; }
+
+@media (max-width: 900px) {
+  .app { flex-direction: column; }
+  .controls { width: 100%; }
+}
